@@ -1,5 +1,5 @@
 #修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-name: Build-Padavan-K2P-5.0
+name: Build-Padavan-K2P
 
 on: 
   workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
       env:
         KERNEL: 3.4
       run: |
-        git clone --depth=1 https://github.com/fightroad/Padavan-KVR.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/miido2023/Padavan-KVR.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
@@ -71,20 +71,20 @@ jobs:
         #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
         ##内网穿透
-        #echo "CONFIG_FIRMWARE_INCLUDE_NPC=y" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_NPC=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
-        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config  #frpc
-        #echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #aliddns
+        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config  #frpc
+        #echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> .config #aliddns
         ##科学上网##
-        #echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=y" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=y" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_XRAY=n" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> .config
         ##vpn
         #echo  "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=y" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT=y" >> .config
-        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=y" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=n" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT=n" >> .config
+        #echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=n" >> .config
         
         ###############################################################################
         ##########
